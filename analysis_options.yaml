@@ -1,0 +1,55 @@
+# Static analysis configuration for circular_protocol package
+# Follows Dart best practices and pub.dev scoring requirements
+
+include: package:lints/recommended.yaml
+
+analyzer:
+  language:
+    strict-casts: true
+    strict-raw-types: true
+
+  errors:
+    # Treat missing required parameters as errors
+    missing_required_param: error
+    # Treat missing return types as errors
+    always_declare_return_types: error
+
+linter:
+  rules:
+    # Additional rules beyond recommended set
+    # These improve code quality and maintainability
+
+    # Documentation
+    - public_member_api_docs  # Require docs on public APIs
+
+    # Error handling
+    - avoid_print             # Prevent debug prints in production
+    - cancel_subscriptions    # Close StreamSubscription
+    - close_sinks             # Close StreamSink
+    - control_flow_in_finally # Avoid control flow in finally blocks
+
+    # Style and consistency
+    - always_declare_return_types      # Explicit return types
+    - always_put_required_named_parameters_first  # Consistency
+    - avoid_bool_literals_in_conditional_expressions  # Simplify conditions
+    - avoid_catching_errors   # Catch Exception, not Error
+    - avoid_escaping_inner_quotes  # Prefer single quotes
+    - avoid_field_initializers_in_const_classes  # Use constructor
+    - avoid_returning_null_for_void  # Proper void usage
+    - avoid_slow_async_io     # Avoid sync I/O in async code
+    - avoid_unnecessary_containers  # Simplify widget trees
+    - avoid_web_libraries_in_flutter  # Platform compatibility
+    - no_adjacent_strings_in_list  # Prevent typos
+    - prefer_const_constructors  # Performance
+    - prefer_const_declarations  # Performance
+    - prefer_final_fields     # Immutability
+    - prefer_final_locals     # Immutability
+    - prefer_if_null_operators  # Simplify null checks
+    - prefer_single_quotes    # Dart style
+    - sort_child_properties_last  # Widget readability
+    - unnecessary_await_in_return  # Remove redundant await
+    - unnecessary_null_aware_assignments  # Simplify null handling
+    - unnecessary_parenthesis  # Clean code
+    - use_full_hex_values_for_flutter_colors  # Consistency
+    - use_function_type_syntax_for_parameters  # Modern syntax
+    - use_key_in_widget_constructors  # Widget best practice

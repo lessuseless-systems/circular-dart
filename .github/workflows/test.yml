@@ -1,0 +1,117 @@
+name: Test
+
+on:
+  push:
+    branches: [main, development]
+  pull_request:
+    branches: [main, development]
+
+jobs:
+  test:
+    name: Test on Dart ${{ matrix.dart-version }}
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        dart-version: ['2.19', '3.0', '3.2', '3.3']
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Dart ${{ matrix.dart-version }}
+        uses: dart-lang/setup-dart@v1
+        with:
+          sdk: ${{ matrix.dart-version }}
+
+      - name: Get dependencies
+        run: dart pub get
+
+      - name: Verify formatting
+        run: dart format --output=none --set-exit-if-changed .
+
+      - name: Analyze code
+        run: dart analyze --fatal-infos --fatal-warnings
+
+      - name: Run unit tests
+        run: dart test test/unit_test.dart
+
+      - name: Run integration tests
+        run: dart test test/integration_test.dart
+
+      - name: Run E2E tests (if credentials available)
+        if: ${{ secrets.CIRCULAR_TEST_ADDRESS != '' }}
+        env:
+          CIRCULAR_TEST_ADDRESS: ${{ secrets.CIRCULAR_TEST_ADDRESS }}
+          CIRCULAR_TEST_BLOCKCHAIN: ${{ secrets.CIRCULAR_TEST_BLOCKCHAIN }}
+        run: dart test test/e2e_test.dart
+
+  code-quality:
+    name: Code Quality
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Dart
+        uses: dart-lang/setup-dart@v1
+        with:
+          sdk: '3.2'
+
+      - name: Get dependencies
+        run: dart pub get
+
+      - name: Check formatting
+        run: dart format --output=none --set-exit-if-changed .
+
+      - name: Analyze with pana
+        run: |
+          dart pub global activate pana
+          dart pub global run pana --no-warning
+
+  publish-dry-run:
+    name: Publish Dry Run
+    runs-on: ubuntu-latest
+    if: github.event_name == 'pull_request'
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Dart
+        uses: dart-lang/setup-dart@v1
+        with:
+          sdk: '3.2'
+
+      - name: Get dependencies
+        run: dart pub get
+
+      - name: Dry run publish
+        run: dart pub publish --dry-run
+
+  publish:
+    name: Publish to pub.dev
+    runs-on: ubuntu-latest
+    if: github.ref == 'refs/heads/main' && github.event_name == 'push'
+    needs: [test, code-quality]
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Dart
+        uses: dart-lang/setup-dart@v1
+        with:
+          sdk: '3.2'
+
+      - name: Get dependencies
+        run: dart pub get
+
+      - name: Publish to pub.dev
+        env:
+          PUB_CREDENTIALS: ${{ secrets.PUB_CREDENTIALS }}
+        run: |
+          mkdir -p ~/.pub-cache
+          echo "$PUB_CREDENTIALS" > ~/.pub-cache/credentials.json
+          dart pub publish --force
