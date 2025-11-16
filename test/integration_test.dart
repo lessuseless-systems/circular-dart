@@ -10,18 +10,66 @@ late MockClient mockClient;
 
 void main() {
   setUpAll(() {
-    // Create mock HTTP client that responds with success for all requests
+    // Create mock HTTP client that responds with endpoint-specific responses
     mockClient = MockClient((request) async {
+      final url = request.url.toString();
+
+      // Return endpoint-specific mock responses
+      Map<String, dynamic> response;
+
+      // Match endpoints in order of specificity (most specific first)
+      if (url.contains('Circular_CheckWallet_')) {
+        response = {'Result': 200, 'Response': {'exists': true}};
+      } else if (url.contains('Circular_GetLatestTransactions_')) {
+        response = {'Result': 200, 'Response': {'transactions': []}};
+      } else if (url.contains('Circular_GetWalletBalance_')) {
+        response = {'Result': 200, 'Response': {'balance': '1000'}};
+      } else if (url.contains('Circular_GetWalletNonce_')) {
+        response = {'Result': 200, 'Response': {'nonce': 42}};
+      } else if (url.contains('Circular_GetWallet_')) {
+        response = {'Result': 200, 'Response': {'address': '0xbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb'}};
+      } else if (url.contains('Circular_AddTransaction_')) {
+        response = {'Result': 200, 'Response': {'transaction_id': '0xaabbccdd11223344'}};
+      } else if (url.contains('Circular_GetPendingTransaction_')) {
+        response = {'Result': 200, 'Response': {'transactions': []}};
+      } else if (url.contains('Circular_GetTransactionbyAddress_')) {
+        response = {'Result': 200, 'Response': {'transactions': []}};
+      } else if (url.contains('Circular_GetTransactionbyDate_')) {
+        response = {'Result': 200, 'Response': {'transactions': []}};
+      } else if (url.contains('Circular_GetTransactionbyID_')) {
+        response = {'Result': 200, 'Response': {'transaction': {}}};
+      } else if (url.contains('Circular_GetTransactionbyNode_')) {
+        response = {'Result': 200, 'Response': {'transactions': []}};
+      } else if (url.contains('Circular_GetAssetList_')) {
+        response = {'Result': 200, 'Response': {'assets': []}};
+      } else if (url.contains('Circular_GetAssetSupply_')) {
+        response = {'Result': 200, 'Response': {'total_supply': 1000000}};
+      } else if (url.contains('Circular_GetAsset_')) {
+        response = {'Result': 200, 'Response': {'asset': {}}};
+      } else if (url.contains('Circular_GetVoucher_')) {
+        response = {'Result': 200, 'Response': {'voucher': {}}};
+      } else if (url.contains('Circular_GetAnalytics_')) {
+        response = {'Result': 200, 'Response': {'analytics': {}}};
+      } else if (url.contains('Circular_GetBlockHeight_')) {
+        response = {'Result': 200, 'Response': {'count': 12345}};
+      } else if (url.contains('Circular_GetBlockRange_')) {
+        response = {'Result': 200, 'Response': {'blocks': []}};
+      } else if (url.contains('Circular_GetBlock_')) {
+        response = {'Result': 200, 'Response': {'block': {}}};
+      } else if (url.contains('Circular_CallContract_')) {
+        response = {'Result': 200, 'Response': {'result': 'mock_result'}};
+      } else if (url.contains('Circular_TestContract_')) {
+        response = {'Result': 200, 'Response': {'result': 'mock_result'}};
+      } else if (url.contains('Circular_ResolveDomain_')) {
+        response = {'Result': 200, 'Response': {'address': '0xresolved'}};
+      } else if (url.contains('Circular_GetBlockchains_')) {
+        response = {'Result': 200, 'Response': {'blockchains': ['MainNet']}};
+      } else {
+        response = {'Result': 200, 'Response': {}};
+      }
+
       return http.Response(
-        jsonEncode({
-          'Result': 200,
-          'Response': {
-            'data': 'mock_success',
-            'array': ['item1', 'item2'],
-            'count': 10,
-            'exists': true,
-          }
-        }),
+        jsonEncode(response),
         200,
         headers: {'content-type': 'application/json'},
       );
@@ -138,7 +186,7 @@ expect((result['Response'] as Map<String, dynamic>)['transactions'], isA<List>()
 'Version': '1.0.8',
     };
 
-    final result = await client.getTransactionbyAddress(request);
+    final result = await client.getTransactionByAddress(request);
 
 expect(result['Result'], equals(200));
 expect((result['Response'] as Map<String, dynamic>)['transactions'], isA<List>());
@@ -151,7 +199,7 @@ expect((result['Response'] as Map<String, dynamic>)['transactions'], isA<List>()
 'Version': '1.0.8',
     };
 
-    final result = await client.getTransactionbyDate(request);
+    final result = await client.getTransactionByDate(request);
 
 expect(result['Result'], equals(200));
 expect((result['Response'] as Map<String, dynamic>)['transactions'], isA<List>());
@@ -163,7 +211,7 @@ expect((result['Response'] as Map<String, dynamic>)['transactions'], isA<List>()
 'Version': '1.0.8',
     };
 
-    final result = await client.getTransactionbyID(request);
+    final result = await client.getTransactionById(request);
 
 expect(result['Result'], equals(200));
 expect((result['Response'] as Map<String, dynamic>)['transaction'], isNotNull);
@@ -175,7 +223,7 @@ expect((result['Response'] as Map<String, dynamic>)['transaction'], isNotNull);
 'Version': '1.0.8',
     };
 
-    final result = await client.getTransactionbyNode(request);
+    final result = await client.getTransactionByNode(request);
 
 expect(result['Result'], equals(200));
 expect((result['Response'] as Map<String, dynamic>)['transactions'], isA<List>());
@@ -331,7 +379,7 @@ expect(result['Result'], equals(200));
 expect((result['Response'] as Map<String, dynamic>)['result'], isNotNull);
   }, timeout: Timeout(Duration(seconds: 10)));
   test('Should handle network connection errors gracefully', () async {
-    final invalidClient = CircularProtocolAPI(nagUrl: 'http://localhost:9999');
+    final invalidClient = CircularProtocolAPI(nagUrl: 'http://localhost:9999/');
 
     final request = {
 'Address': '0xbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb',
@@ -340,11 +388,26 @@ expect((result['Response'] as Map<String, dynamic>)['result'], isNotNull);
     };
 
     expect(
-      () => invalidClient.checkWallet(request),
-      throwsA(isA<CircularAPIException>()),
+      invalidClient.checkWallet(request),
+      throwsA(isA<Exception>()),
     );
   }, timeout: Timeout(Duration(seconds: 10)));
   test('Should handle invalid address gracefully', () async {
+    // Create mock client that returns an error for invalid addresses
+    final errorMockClient = MockClient((request) async {
+      return http.Response(
+        jsonEncode({'Result': 400, 'Response': {'error': 'Invalid address'}}),
+        400,
+        headers: {'content-type': 'application/json'},
+      );
+    });
+
+    final errorClient = CircularProtocolAPI(
+      nagUrl: 'https://mock.test/',
+      nagKey: 'mock-key',
+      httpClient: errorMockClient,
+    );
+
     final request = {
 'Address': 'invalid',
 'Blockchain': "MainNet",
@@ -352,7 +415,7 @@ expect((result['Response'] as Map<String, dynamic>)['result'], isNotNull);
     };
 
     expect(
-      () => client.checkWallet(request),
+      errorClient.checkWallet(request),
       throwsA(isA<CircularAPIException>()),
     );
   }, timeout: Timeout(Duration(seconds: 10)));

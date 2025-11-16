@@ -68,7 +68,7 @@ void main() async {
 
 ## 📜 API Reference
 
-The Circular Protocol Dart SDK provides **39 methods** across multiple categories for comprehensive blockchain interaction.
+The Circular Protocol Dart SDK provides **40 methods** across multiple categories for comprehensive blockchain interaction.
 
 ### Wallet Operations (5 methods)
 
@@ -82,10 +82,10 @@ The Circular Protocol Dart SDK provides **39 methods** across multiple categorie
 
 - **`sendTransaction`** - Submit new transaction to the blockchain
 - **`getPendingTransaction`** - Check transaction status in the mempool
-- **`getTransactionbyID`** - Query transaction by unique identifier
-- **`getTransactionbyNode`** - Query transactions by validator node
-- **`getTransactionbyAddress`** - Query all transactions for a wallet address
-- **`getTransactionbyDate`** - Query transactions within a date range
+- **`getTransactionById`** - Query transaction by unique identifier
+- **`getTransactionByNode`** - Query transactions by validator node
+- **`getTransactionByAddress`** - Query all transactions for a wallet address
+- **`getTransactionByDate`** - Query transactions within a date range
 
 ### Block Operations (4 methods)
 
@@ -116,13 +116,14 @@ The Circular Protocol Dart SDK provides **39 methods** across multiple categorie
 
 ---
 
-### Cryptographic Helpers (5 methods)
+### Cryptographic Helpers (6 methods)
 
 - **`signMessage`** - Generate ECDSA secp256k1 signatures (DER format)
 - **`verifySignature`** - Verify message signatures against public keys
 - **`getPublicKey`** - Derive public key from private key (128 hex characters, uncompressed, no 0x04 prefix)
 - **`hashString`** - Generate SHA-256 hash of string input
 - **`getFormattedTimestamp`** - Get current UTC timestamp in Circular Protocol format (`YYYY:MM:DD-HH:mm:ss`)
+- **`getKeysFromString`** - Generate complete key set from seed phrase (publicKey, privateKey, address)
 
 **Implementation Details:**
 - **TypeScript/JavaScript**: `crypto-browserify` (browser-compatible)
@@ -145,7 +146,7 @@ The Circular Protocol Dart SDK provides **39 methods** across multiple categorie
 
 ### Advanced Helpers (3 methods)
 
-- **`GetError`** - Retrieve last error message from SDK
+- **`getError`** - Retrieve last error message from SDK
 - **`handleError`** - Internal error tracking and logging
 - **`getTransactionOutcome`** - Poll for transaction confirmation with automatic retries
 
@@ -173,12 +174,11 @@ The Circular Protocol Dart SDK provides **39 methods** across multiple categorie
 
 ## 📊 Total Methods: 39
 
-- **23** API Endpoint Methods
-- **5** Cryptographic Helpers
+- **24** API Endpoint Methods (includes sendTransaction alias)
+- **6** Cryptographic Helpers
 - **4** Encoding Helpers
 - **3** Advanced Helpers
-- **3** Configuration Methods (getNagUrl, setNagUrl, getNagKey, setNagKey, setHeader, etc.)
-- **1** Convenience Method
+- **2** Configuration Methods (getNagUrl/setNagUrl, getNagKey/setNagKey, setHeader as one unit)
 
 > **Note**: For detailed parameter types, response structures, and advanced usage examples, refer to the **[Dart SDK Documentation](https://circular-protocol.gitbook.io/circular-sdk/api-docs/dart)**.
 

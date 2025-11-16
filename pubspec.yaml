@@ -1,6 +1,6 @@
 name: circular_protocol
 description: Official Dart SDK for the Circular Protocol blockchain API
-version: 1.0.8
+version: 1.0.9
 homepage: https://github.com/circular-protocol/circular-dart
 repository: https://github.com/circular-protocol/circular-dart
 issue_tracker: https://github.com/circular-protocol/circular-dart/issues

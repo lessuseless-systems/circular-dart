@@ -174,7 +174,7 @@ expect(result['Result'], isNotNull);
 
     final request = jsonDecode(requestJson) as Map<String, dynamic>;
 
-    final result = await api.getTransactionbyAddress(request);
+    final result = await api.getTransactionByAddress(request);
 
 expect(result['Result'], isNotNull);
 
@@ -192,7 +192,7 @@ expect(result['Result'], isNotNull);
 
     final request = jsonDecode(requestJson) as Map<String, dynamic>;
 
-    final result = await api.getTransactionbyDate(request);
+    final result = await api.getTransactionByDate(request);
 
 expect(result['Result'], isNotNull);
 
@@ -209,7 +209,7 @@ expect(result['Result'], isNotNull);
 
     final request = jsonDecode(requestJson) as Map<String, dynamic>;
 
-    final result = await api.getTransactionbyID(request);
+    final result = await api.getTransactionById(request);
 
 expect(result['Result'], isNotNull);
 
@@ -226,7 +226,7 @@ expect(result['Result'], isNotNull);
 
     final request = jsonDecode(requestJson) as Map<String, dynamic>;
 
-    final result = await api.getTransactionbyNode(request);
+    final result = await api.getTransactionByNode(request);
 
 expect(result['Result'], isNotNull);
 
