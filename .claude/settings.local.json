@@ -13,7 +13,8 @@
       "Bash(git commit:*)",
       "Bash(export CIRCULAR_TEST_ADDRESS=\"0xd55872dbe508fd27445889b9d81bbc9411bb0f1353153a249f2fb34ef2690310\")",
       "Bash(export CIRCULAR_TEST_BLOCKCHAIN=\"MainNet\")",
-      "Bash(curl -X POST 'https://nag.circularlabs.io/NAG.php?cep=Circular_CheckWallet_' -H 'Content-Type: application/json' -d '{\"\"Address\"\":\"\"0xd55872dbe508fd27445889b9d81bbc9411bb0f1353153a249f2fb34ef2690310\"\",\"\"Blockchain\"\":\"\"Sand Box\"\",\"\"Version\"\":\"\"1.0.8\"\"}' -v)"
+      "Bash(curl -X POST 'https://nag.circularlabs.io/NAG.php?cep=Circular_CheckWallet_' -H 'Content-Type: application/json' -d '{\"\"Address\"\":\"\"0xd55872dbe508fd27445889b9d81bbc9411bb0f1353153a249f2fb34ef2690310\"\",\"\"Blockchain\"\":\"\"Sand Box\"\",\"\"Version\"\":\"\"1.0.8\"\"}' -v)",
+      "Read(//persist/home/lessuseless/Projects/Orgs/Circular-Protocol/circular-canonical/**)"
     ],
     "deny": [],
     "ask": []

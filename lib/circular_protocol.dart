@@ -1,6 +1,6 @@
 /// Circular Protocol Dart SDK
 /// Official Dart SDK for the Circular Protocol blockchain API
-/// Version: 1.0.8
+/// Version: 1.0.9
 ///
 /// Example usage:
 /// ```dart
@@ -12,7 +12,7 @@
 /// final result = await client.checkWallet({
 ///   'Address': '0x...',
 ///   'Blockchain': '714d2ac07a826b66ac56752eebd7c77b58d2ee842e523d913fd0ef06e6bdfcae',
-///   'Version': '1.0.8',
+///   'Version': '1.0.9',
 /// });
 /// print(result);
 /// ```
@@ -893,7 +893,7 @@ Future<Map<String, dynamic>> registerWallet(String blockchain, String publicKey)
     'Nonce': nonce,
     'Signature': signature,
     'Blockchain': blockchain,
-    'Version': '1.0.8',
+    'Version': '1.0.9',
   };
 
   // Call sendTransaction
@@ -1392,6 +1392,56 @@ Future<Map<String, dynamic>> registerWallet(String blockchain, String publicKey)
   // ============================================================================
   // Helper Methods - Advanced
   // ============================================================================
+
+  /// Gets the SDK version string.
+  ///
+  /// Returns the current version of the Circular Protocol Dart SDK.
+  /// Useful for debugging, logging, and ensuring SDK compatibility.
+  ///
+  /// **Returns:** SDK version string (e.g., '1.0.9')
+  ///
+  /// **Example:**
+  /// ```dart
+  /// final version = api.getVersion();
+  /// print('Using Circular Protocol Dart SDK v$version');
+  ///
+  /// // Use in requests
+  /// final result = await api.checkWallet({
+  ///   'Address': walletAddress,
+  ///   'Blockchain': 'MainNet',
+  ///   'Version': api.getVersion(),
+  /// });
+  /// ```
+  ///
+  /// **See also:** [setNode], [getNagUrl]
+  String getVersion() {
+    return '1.0.9';
+  }
+
+  /// Sets the primary node address for querying the blockchain.
+  ///
+  /// Updates the NAG endpoint URL used for all API requests. This is an alias
+  /// for [setNagUrl] provided for consistency with other SDKs.
+  ///
+  /// **Parameters:**
+  /// - [address]: Node address or NAG endpoint URL
+  ///
+  /// **Example:**
+  /// ```dart
+  /// // Set custom node
+  /// api.setNode('https://custom-node.example.com/NAG.php?cep=');
+  ///
+  /// // Switch to testnet
+  /// api.setNode('https://testnet.circularlabs.io/NAG.php?cep=');
+  ///
+  /// // Verify change
+  /// print('Current node: ${api.getNagUrl()}');
+  /// ```
+  ///
+  /// **See also:** [setNagUrl], [getNagUrl], [getVersion]
+  void setNode(String address) {
+    nagUrl = address;
+  }
 
   /// Retrieves the last error message from the SDK.
   ///

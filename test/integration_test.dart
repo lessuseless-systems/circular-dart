@@ -92,7 +92,7 @@ void main() {
     final request = {
 'Address': '0xbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb',
 'Blockchain': "MainNet",
-'Version': '1.0.8',
+'Version': '1.0.9',
     };
 
     final result = await client.checkWallet(request);
@@ -105,7 +105,7 @@ expect((result['Response'] as Map<String, dynamic>)['exists'], equals(true));
 'Address': '0xbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb',
 'Blockchain': "MainNet",
 'Limit': 10,
-'Version': '1.0.8',
+'Version': '1.0.9',
     };
 
     final result = await client.getLatestTransactions(request);
@@ -117,7 +117,7 @@ expect((result['Response'] as Map<String, dynamic>)['transactions'], isA<List>()
     final request = {
 'Address': '0xbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb',
 'Blockchain': "MainNet",
-'Version': '1.0.8',
+'Version': '1.0.9',
     };
 
     final result = await client.getWallet(request);
@@ -130,7 +130,7 @@ expect((result['Response'] as Map<String, dynamic>)['address'], isNotNull);
 'Address': '0xbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb',
 'Asset': '0xC123',
 'Blockchain': "MainNet",
-'Version': '1.0.8',
+'Version': '1.0.9',
     };
 
     final result = await client.getWalletBalance(request);
@@ -142,7 +142,7 @@ expect((result['Response'] as Map<String, dynamic>)['balance'], isNotNull);
     final request = {
 'Address': '0xbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb',
 'Blockchain': "MainNet",
-'Version': '1.0.8',
+'Version': '1.0.9',
     };
 
     final result = await client.getWalletNonce(request);
@@ -160,7 +160,7 @@ expect((result['Response'] as Map<String, dynamic>)['nonce'] as int, greaterThan
 'Timestamp': '1234567890',
 'To': '0xcccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc',
 'Type': 'transfer',
-'Version': '1.0.8',
+'Version': '1.0.9',
     };
 
     final result = await client.addTransaction(request);
@@ -171,7 +171,7 @@ expect((result['Response'] as Map<String, dynamic>)['transaction_id'], isNotNull
   test('Should get pending transactions', () async {
     final request = {
 'Blockchain': "MainNet",
-'Version': '1.0.8',
+'Version': '1.0.9',
     };
 
     final result = await client.getPendingTransaction(request);
@@ -183,7 +183,7 @@ expect((result['Response'] as Map<String, dynamic>)['transactions'], isA<List>()
     final request = {
 'Address': '0xbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb',
 'Blockchain': "MainNet",
-'Version': '1.0.8',
+'Version': '1.0.9',
     };
 
     final result = await client.getTransactionByAddress(request);
@@ -196,7 +196,7 @@ expect((result['Response'] as Map<String, dynamic>)['transactions'], isA<List>()
 'Blockchain': "MainNet",
 'EndDate': '2024-12-31',
 'StartDate': '2024-01-01',
-'Version': '1.0.8',
+'Version': '1.0.9',
     };
 
     final result = await client.getTransactionByDate(request);
@@ -208,7 +208,7 @@ expect((result['Response'] as Map<String, dynamic>)['transactions'], isA<List>()
     final request = {
 'Blockchain': "MainNet",
 'TransactionID': '0xaabbccdd11223344',
-'Version': '1.0.8',
+'Version': '1.0.9',
     };
 
     final result = await client.getTransactionById(request);
@@ -220,7 +220,7 @@ expect((result['Response'] as Map<String, dynamic>)['transaction'], isNotNull);
     final request = {
 'Blockchain': "MainNet",
 'Node': '0xnode123',
-'Version': '1.0.8',
+'Version': '1.0.9',
     };
 
     final result = await client.getTransactionByNode(request);
@@ -232,7 +232,7 @@ expect((result['Response'] as Map<String, dynamic>)['transactions'], isA<List>()
     final request = {
 'Asset': '0xC123',
 'Blockchain': "MainNet",
-'Version': '1.0.8',
+'Version': '1.0.9',
     };
 
     final result = await client.getAsset(request);
@@ -243,7 +243,7 @@ expect((result['Response'] as Map<String, dynamic>)['asset'], isNotNull);
   test('Should get list of all assets', () async {
     final request = {
 'Blockchain': "MainNet",
-'Version': '1.0.8',
+'Version': '1.0.9',
     };
 
     final result = await client.getAssetList(request);
@@ -255,7 +255,7 @@ expect((result['Response'] as Map<String, dynamic>)['assets'], isA<List>());
     final request = {
 'Asset': '0xC123',
 'Blockchain': "MainNet",
-'Version': '1.0.8',
+'Version': '1.0.9',
     };
 
     final result = await client.getAssetSupply(request);
@@ -266,7 +266,7 @@ expect((result['Response'] as Map<String, dynamic>)['total_supply'], isNotNull);
   test('Should get voucher details', () async {
     final request = {
 'Blockchain': "MainNet",
-'Version': '1.0.8',
+'Version': '1.0.9',
 'VoucherID': '0xvoucher123',
     };
 
@@ -277,7 +277,7 @@ expect((result['Response'] as Map<String, dynamic>)['voucher'], isNotNull);
   }, timeout: Timeout(Duration(seconds: 10)));
   test('Should list supported blockchains', () async {
     final request = {
-'Version': '1.0.8',
+'Version': '1.0.9',
     };
 
     final result = await client.getBlockchains(request);
@@ -289,7 +289,7 @@ expect((result['Response'] as Map<String, dynamic>)['blockchains'] as List, cont
   test('Should get blockchain analytics', () async {
     final request = {
 'Blockchain': "MainNet",
-'Version': '1.0.8',
+'Version': '1.0.9',
     };
 
     final result = await client.getAnalytics(request);
@@ -301,7 +301,7 @@ expect((result['Response'] as Map<String, dynamic>)['analytics'], isNotNull);
     final request = {
 'Block': 12345,
 'Blockchain': "MainNet",
-'Version': '1.0.8',
+'Version': '1.0.9',
     };
 
     final result = await client.getBlock(request);
@@ -312,7 +312,7 @@ expect((result['Response'] as Map<String, dynamic>)['block'], isNotNull);
   test('Should get current blockchain height', () async {
     final request = {
 'Blockchain': "MainNet",
-'Version': '1.0.8',
+'Version': '1.0.9',
     };
 
     final result = await client.getBlockCount(request);
@@ -325,7 +325,7 @@ expect((result['Response'] as Map<String, dynamic>)['count'] as int, greaterThan
 'Blockchain': "MainNet",
 'EndBlock': 10010,
 'StartBlock': 10000,
-'Version': '1.0.8',
+'Version': '1.0.9',
     };
 
     final result = await client.getBlockRange(request);
@@ -337,7 +337,7 @@ expect((result['Response'] as Map<String, dynamic>)['blocks'], isA<List>());
     final request = {
 'Blockchain': "MainNet",
 'Domain': 'myname.circular',
-'Version': '1.0.8',
+'Version': '1.0.9',
     };
 
     final result = await client.getDomain(request);
@@ -353,7 +353,7 @@ expect((result['Response'] as Map<String, dynamic>)['address'], isNotNull);
 'Parameters': [
   "0xwallet123"
 ],
-'Version': '1.0.8',
+'Version': '1.0.9',
     };
 
     final result = await client.callContract(request);
@@ -370,7 +370,7 @@ expect((result['Response'] as Map<String, dynamic>)['result'], isNotNull);
   "0xrecipient",
   "1000"
 ],
-'Version': '1.0.8',
+'Version': '1.0.9',
     };
 
     final result = await client.testContract(request);
@@ -384,7 +384,7 @@ expect((result['Response'] as Map<String, dynamic>)['result'], isNotNull);
     final request = {
 'Address': '0xbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb',
 'Blockchain': "MainNet",
-'Version': '1.0.8',
+'Version': '1.0.9',
     };
 
     expect(
@@ -411,7 +411,7 @@ expect((result['Response'] as Map<String, dynamic>)['result'], isNotNull);
     final request = {
 'Address': 'invalid',
 'Blockchain': "MainNet",
-'Version': '1.0.8',
+'Version': '1.0.9',
     };
 
     expect(

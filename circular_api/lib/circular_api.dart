@@ -6,7 +6,7 @@
 ///     CIRCULAR GLOBAL LEDGERS, INC. - USA                                     ///
 ///                                                                             ///
 ///                                                                             ///
-///     Version : 1.0.8                                                         ///
+///     Version : 1.0.9                                                         ///
 ///     Package : 1.0.2                                                         ///
 ///                                                                             ///
 ///     Creation: 16/09/2024                                                    ///
@@ -35,7 +35,7 @@ class CircularApi {
   // VARIABLES
   String _NAGKEY = '';
   String _NAGURL = 'https://nag.circularlabs.io/NAG.php?cep=';
-  final String _version = '1.0.8';
+  final String _version = '1.0.9';
   final String _packageVersion = '1.0.4';
 
   // SETTERS AND GETTERS

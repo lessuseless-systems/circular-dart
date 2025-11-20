@@ -62,7 +62,7 @@ void main() {
       final result = await client.checkWallet({
         'Address': '0x1234567890abcdef1234567890abcdef1234567890abcdef1234567890abcdef',
         'Blockchain': 'MainNet',
-        'Version': '1.0.8',
+        'Version': '1.0.9',
       });
 
       expect(result['Result'], equals(200));
@@ -83,7 +83,7 @@ void main() {
         () => client.checkWallet({
           'Address': '0x1234567890abcdef1234567890abcdef1234567890abcdef1234567890abcdef',
           'Blockchain': 'MainNet',
-          'Version': '1.0.8',
+          'Version': '1.0.9',
         }),
         throwsA(isA<CircularAPIException>()),
       );
@@ -110,7 +110,7 @@ void main() {
         () => client.checkWallet({
           'Address': '0x0000000000000000000000000000000000000000000000000000000000000000',
           'Blockchain': 'MainNet',
-          'Version': '1.0.8',
+          'Version': '1.0.9',
         }),
         throwsA(isA<CircularAPIException>()),
       );
@@ -132,7 +132,7 @@ void main() {
         () => client.checkWallet({
           'Address': '0x1234567890abcdef1234567890abcdef1234567890abcdef1234567890abcdef',
           'Blockchain': 'MainNet',
-          'Version': '1.0.8',
+          'Version': '1.0.9',
         }),
         throwsA(isA<CircularAPIException>()),
       );
@@ -160,7 +160,7 @@ void main() {
       await client.checkWallet({
         'Address': '0x1234567890abcdef1234567890abcdef1234567890abcdef1234567890abcdef',
         'Blockchain': 'MainNet',
-        'Version': '1.0.8',
+        'Version': '1.0.9',
       });
     });
 

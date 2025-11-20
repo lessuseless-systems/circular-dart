@@ -46,7 +46,7 @@ void main() {
     print('━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━');
     print('🌐 E2E Tests - Live NAG Endpoint');
     print('━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━');
-    print('Version: 1.0.8');
+    print('Version: 1.0.9');
     print('Endpoint: $nagUrl');
     print('Test Address: $testAddress');
     print('Total tests: 21');
@@ -62,7 +62,7 @@ void main() {
     final requestJson = '''{
   "Address": "\${CIRCULAR_TEST_ADDRESS}",
   "Blockchain": "\${CIRCULAR_TEST_BLOCKCHAIN}",
-  "Version": "1.0.8"
+  "Version": "1.0.9"
 }'''
         .replaceAll('\${CIRCULAR_TEST_ADDRESS}', Platform.environment['CIRCULAR_TEST_ADDRESS'] ?? '')
         .replaceAll('\${CIRCULAR_TEST_BLOCKCHAIN}', Platform.environment['CIRCULAR_TEST_BLOCKCHAIN'] ?? '0x8a20baa40c45dc5055aeb26197c203e576ef389d9acb171bd62da11dc5ad72b2');
@@ -79,7 +79,7 @@ expect(result['Result'], isNotNull);
     final requestJson = '''{
   "Address": "\${CIRCULAR_TEST_ADDRESS}",
   "Blockchain": "\${CIRCULAR_TEST_BLOCKCHAIN}",
-  "Version": "1.0.8"
+  "Version": "1.0.9"
 }'''
         .replaceAll('\${CIRCULAR_TEST_ADDRESS}', Platform.environment['CIRCULAR_TEST_ADDRESS'] ?? '')
         .replaceAll('\${CIRCULAR_TEST_BLOCKCHAIN}', Platform.environment['CIRCULAR_TEST_BLOCKCHAIN'] ?? '0x8a20baa40c45dc5055aeb26197c203e576ef389d9acb171bd62da11dc5ad72b2');
@@ -96,7 +96,7 @@ expect(result['Result'], isNotNull);
     final requestJson = '''{
   "Address": "\${CIRCULAR_TEST_ADDRESS}",
   "Blockchain": "\${CIRCULAR_TEST_BLOCKCHAIN}",
-  "Version": "1.0.8"
+  "Version": "1.0.9"
 }'''
         .replaceAll('\${CIRCULAR_TEST_ADDRESS}', Platform.environment['CIRCULAR_TEST_ADDRESS'] ?? '')
         .replaceAll('\${CIRCULAR_TEST_BLOCKCHAIN}', Platform.environment['CIRCULAR_TEST_BLOCKCHAIN'] ?? '0x8a20baa40c45dc5055aeb26197c203e576ef389d9acb171bd62da11dc5ad72b2');
@@ -114,7 +114,7 @@ expect(result['Result'], isNotNull);
   "Address": "\${CIRCULAR_TEST_ADDRESS}",
   "Asset": "CIRX",
   "Blockchain": "\${CIRCULAR_TEST_BLOCKCHAIN}",
-  "Version": "1.0.8"
+  "Version": "1.0.9"
 }'''
         .replaceAll('\${CIRCULAR_TEST_ADDRESS}', Platform.environment['CIRCULAR_TEST_ADDRESS'] ?? '')
         .replaceAll('\${CIRCULAR_TEST_BLOCKCHAIN}', Platform.environment['CIRCULAR_TEST_BLOCKCHAIN'] ?? '0x8a20baa40c45dc5055aeb26197c203e576ef389d9acb171bd62da11dc5ad72b2');
@@ -131,7 +131,7 @@ expect(result['Result'], isNotNull);
     final requestJson = '''{
   "Address": "\${CIRCULAR_TEST_ADDRESS}",
   "Blockchain": "\${CIRCULAR_TEST_BLOCKCHAIN}",
-  "Version": "1.0.8"
+  "Version": "1.0.9"
 }'''
         .replaceAll('\${CIRCULAR_TEST_ADDRESS}', Platform.environment['CIRCULAR_TEST_ADDRESS'] ?? '')
         .replaceAll('\${CIRCULAR_TEST_BLOCKCHAIN}', Platform.environment['CIRCULAR_TEST_BLOCKCHAIN'] ?? '0x8a20baa40c45dc5055aeb26197c203e576ef389d9acb171bd62da11dc5ad72b2');
@@ -150,7 +150,7 @@ expect(result['Result'], isNotNull);
   test('E2E: Get pending transactions', () async {
     final requestJson = '''{
   "Blockchain": "\${CIRCULAR_TEST_BLOCKCHAIN}",
-  "Version": "1.0.8"
+  "Version": "1.0.9"
 }'''
         .replaceAll('\${CIRCULAR_TEST_ADDRESS}', Platform.environment['CIRCULAR_TEST_ADDRESS'] ?? '')
         .replaceAll('\${CIRCULAR_TEST_BLOCKCHAIN}', Platform.environment['CIRCULAR_TEST_BLOCKCHAIN'] ?? '0x8a20baa40c45dc5055aeb26197c203e576ef389d9acb171bd62da11dc5ad72b2');
@@ -167,7 +167,7 @@ expect(result['Result'], isNotNull);
     final requestJson = '''{
   "Address": "\${CIRCULAR_TEST_ADDRESS}",
   "Blockchain": "\${CIRCULAR_TEST_BLOCKCHAIN}",
-  "Version": "1.0.8"
+  "Version": "1.0.9"
 }'''
         .replaceAll('\${CIRCULAR_TEST_ADDRESS}', Platform.environment['CIRCULAR_TEST_ADDRESS'] ?? '')
         .replaceAll('\${CIRCULAR_TEST_BLOCKCHAIN}', Platform.environment['CIRCULAR_TEST_BLOCKCHAIN'] ?? '0x8a20baa40c45dc5055aeb26197c203e576ef389d9acb171bd62da11dc5ad72b2');
@@ -185,7 +185,7 @@ expect(result['Result'], isNotNull);
   "Blockchain": "\${CIRCULAR_TEST_BLOCKCHAIN}",
   "EndDate": "2024-12-31",
   "StartDate": "2024-01-01",
-  "Version": "1.0.8"
+  "Version": "1.0.9"
 }'''
         .replaceAll('\${CIRCULAR_TEST_ADDRESS}', Platform.environment['CIRCULAR_TEST_ADDRESS'] ?? '')
         .replaceAll('\${CIRCULAR_TEST_BLOCKCHAIN}', Platform.environment['CIRCULAR_TEST_BLOCKCHAIN'] ?? '0x8a20baa40c45dc5055aeb26197c203e576ef389d9acb171bd62da11dc5ad72b2');
@@ -202,7 +202,7 @@ expect(result['Result'], isNotNull);
     final requestJson = '''{
   "Blockchain": "\${CIRCULAR_TEST_BLOCKCHAIN}",
   "TransactionID": "0x0000000000000000000000000000000000000000000000000000000000000000",
-  "Version": "1.0.8"
+  "Version": "1.0.9"
 }'''
         .replaceAll('\${CIRCULAR_TEST_ADDRESS}', Platform.environment['CIRCULAR_TEST_ADDRESS'] ?? '')
         .replaceAll('\${CIRCULAR_TEST_BLOCKCHAIN}', Platform.environment['CIRCULAR_TEST_BLOCKCHAIN'] ?? '0x8a20baa40c45dc5055aeb26197c203e576ef389d9acb171bd62da11dc5ad72b2');
@@ -219,7 +219,7 @@ expect(result['Result'], isNotNull);
     final requestJson = '''{
   "Blockchain": "\${CIRCULAR_TEST_BLOCKCHAIN}",
   "NodeID": "node-0001",
-  "Version": "1.0.8"
+  "Version": "1.0.9"
 }'''
         .replaceAll('\${CIRCULAR_TEST_ADDRESS}', Platform.environment['CIRCULAR_TEST_ADDRESS'] ?? '')
         .replaceAll('\${CIRCULAR_TEST_BLOCKCHAIN}', Platform.environment['CIRCULAR_TEST_BLOCKCHAIN'] ?? '0x8a20baa40c45dc5055aeb26197c203e576ef389d9acb171bd62da11dc5ad72b2');
@@ -239,7 +239,7 @@ expect(result['Result'], isNotNull);
     final requestJson = '''{
   "AssetName": "CIRX",
   "Blockchain": "\${CIRCULAR_TEST_BLOCKCHAIN}",
-  "Version": "1.0.8"
+  "Version": "1.0.9"
 }'''
         .replaceAll('\${CIRCULAR_TEST_ADDRESS}', Platform.environment['CIRCULAR_TEST_ADDRESS'] ?? '')
         .replaceAll('\${CIRCULAR_TEST_BLOCKCHAIN}', Platform.environment['CIRCULAR_TEST_BLOCKCHAIN'] ?? '0x8a20baa40c45dc5055aeb26197c203e576ef389d9acb171bd62da11dc5ad72b2');
@@ -255,7 +255,7 @@ expect(result['Result'], isNotNull);
   test('E2E: Get list of all assets on blockchain', () async {
     final requestJson = '''{
   "Blockchain": "\${CIRCULAR_TEST_BLOCKCHAIN}",
-  "Version": "1.0.8"
+  "Version": "1.0.9"
 }'''
         .replaceAll('\${CIRCULAR_TEST_ADDRESS}', Platform.environment['CIRCULAR_TEST_ADDRESS'] ?? '')
         .replaceAll('\${CIRCULAR_TEST_BLOCKCHAIN}', Platform.environment['CIRCULAR_TEST_BLOCKCHAIN'] ?? '0x8a20baa40c45dc5055aeb26197c203e576ef389d9acb171bd62da11dc5ad72b2');
@@ -272,7 +272,7 @@ expect(result['Result'], isNotNull);
     final requestJson = '''{
   "AssetName": "CIRX",
   "Blockchain": "\${CIRCULAR_TEST_BLOCKCHAIN}",
-  "Version": "1.0.8"
+  "Version": "1.0.9"
 }'''
         .replaceAll('\${CIRCULAR_TEST_ADDRESS}', Platform.environment['CIRCULAR_TEST_ADDRESS'] ?? '')
         .replaceAll('\${CIRCULAR_TEST_BLOCKCHAIN}', Platform.environment['CIRCULAR_TEST_BLOCKCHAIN'] ?? '0x8a20baa40c45dc5055aeb26197c203e576ef389d9acb171bd62da11dc5ad72b2');
@@ -288,7 +288,7 @@ expect(result['Result'], isNotNull);
   test('E2E: Get voucher details', () async {
     final requestJson = '''{
   "Blockchain": "\${CIRCULAR_TEST_BLOCKCHAIN}",
-  "Version": "1.0.8",
+  "Version": "1.0.9",
   "VoucherID": "test-voucher-id"
 }'''
         .replaceAll('\${CIRCULAR_TEST_ADDRESS}', Platform.environment['CIRCULAR_TEST_ADDRESS'] ?? '')
@@ -307,7 +307,7 @@ expect(result['Result'], isNotNull);
   group('Network Operations', () {
   test('E2E: Retrieve list of available blockchains', () async {
     final requestJson = '''{
-  "Version": "1.0.8"
+  "Version": "1.0.9"
 }'''
         .replaceAll('\${CIRCULAR_TEST_ADDRESS}', Platform.environment['CIRCULAR_TEST_ADDRESS'] ?? '')
         .replaceAll('\${CIRCULAR_TEST_BLOCKCHAIN}', Platform.environment['CIRCULAR_TEST_BLOCKCHAIN'] ?? '0x8a20baa40c45dc5055aeb26197c203e576ef389d9acb171bd62da11dc5ad72b2');
@@ -327,7 +327,7 @@ expect(result['Response.Blockchains'], isA<List>());
   test('E2E: Get blockchain analytics and statistics', () async {
     final requestJson = '''{
   "Blockchain": "\${CIRCULAR_TEST_BLOCKCHAIN}",
-  "Version": "1.0.8"
+  "Version": "1.0.9"
 }'''
         .replaceAll('\${CIRCULAR_TEST_ADDRESS}', Platform.environment['CIRCULAR_TEST_ADDRESS'] ?? '')
         .replaceAll('\${CIRCULAR_TEST_BLOCKCHAIN}', Platform.environment['CIRCULAR_TEST_BLOCKCHAIN'] ?? '0x8a20baa40c45dc5055aeb26197c203e576ef389d9acb171bd62da11dc5ad72b2');
@@ -344,7 +344,7 @@ expect(result['Result'], isNotNull);
     final requestJson = '''{
   "BlockNumber": 1,
   "Blockchain": "\${CIRCULAR_TEST_BLOCKCHAIN}",
-  "Version": "1.0.8"
+  "Version": "1.0.9"
 }'''
         .replaceAll('\${CIRCULAR_TEST_ADDRESS}', Platform.environment['CIRCULAR_TEST_ADDRESS'] ?? '')
         .replaceAll('\${CIRCULAR_TEST_BLOCKCHAIN}', Platform.environment['CIRCULAR_TEST_BLOCKCHAIN'] ?? '0x8a20baa40c45dc5055aeb26197c203e576ef389d9acb171bd62da11dc5ad72b2');
@@ -360,7 +360,7 @@ expect(result['Result'], isNotNull);
   test('E2E: Get current block count from blockchain', () async {
     final requestJson = '''{
   "Blockchain": "\${CIRCULAR_TEST_BLOCKCHAIN}",
-  "Version": "1.0.8"
+  "Version": "1.0.9"
 }'''
         .replaceAll('\${CIRCULAR_TEST_ADDRESS}', Platform.environment['CIRCULAR_TEST_ADDRESS'] ?? '')
         .replaceAll('\${CIRCULAR_TEST_BLOCKCHAIN}', Platform.environment['CIRCULAR_TEST_BLOCKCHAIN'] ?? '0x8a20baa40c45dc5055aeb26197c203e576ef389d9acb171bd62da11dc5ad72b2');
@@ -378,7 +378,7 @@ expect(result['Result'], isNotNull);
   "Blockchain": "\${CIRCULAR_TEST_BLOCKCHAIN}",
   "EndBlock": 10,
   "StartBlock": 1,
-  "Version": "1.0.8"
+  "Version": "1.0.9"
 }'''
         .replaceAll('\${CIRCULAR_TEST_ADDRESS}', Platform.environment['CIRCULAR_TEST_ADDRESS'] ?? '')
         .replaceAll('\${CIRCULAR_TEST_BLOCKCHAIN}', Platform.environment['CIRCULAR_TEST_BLOCKCHAIN'] ?? '0x8a20baa40c45dc5055aeb26197c203e576ef389d9acb171bd62da11dc5ad72b2');
@@ -398,7 +398,7 @@ expect(result['Result'], isNotNull);
     final requestJson = '''{
   "Blockchain": "\${CIRCULAR_TEST_BLOCKCHAIN}",
   "Domain": "test.circular",
-  "Version": "1.0.8"
+  "Version": "1.0.9"
 }'''
         .replaceAll('\${CIRCULAR_TEST_ADDRESS}', Platform.environment['CIRCULAR_TEST_ADDRESS'] ?? '')
         .replaceAll('\${CIRCULAR_TEST_BLOCKCHAIN}', Platform.environment['CIRCULAR_TEST_BLOCKCHAIN'] ?? '0x8a20baa40c45dc5055aeb26197c203e576ef389d9acb171bd62da11dc5ad72b2');
@@ -420,7 +420,7 @@ expect(result['Result'], isNotNull);
   "ContractAddress": "0x0000000000000000000000000000000000000000000000000000000000000000",
   "Method": "testMethod",
   "Parameters": "{}",
-  "Version": "1.0.8"
+  "Version": "1.0.9"
 }'''
         .replaceAll('\${CIRCULAR_TEST_ADDRESS}', Platform.environment['CIRCULAR_TEST_ADDRESS'] ?? '')
         .replaceAll('\${CIRCULAR_TEST_BLOCKCHAIN}', Platform.environment['CIRCULAR_TEST_BLOCKCHAIN'] ?? '0x8a20baa40c45dc5055aeb26197c203e576ef389d9acb171bd62da11dc5ad72b2');
