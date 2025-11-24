@@ -82,8 +82,9 @@ String _lastError = '';
   /// Make HTTP request to NAG API
   Future<Map<String, dynamic>> _makeRequest(
     String endpoint,
-    Map<String, dynamic> data,
-  ) async {
+    Map<String, dynamic> data, {
+    Duration? requestTimeout,
+  }) async {
     final url = Uri.parse('${nagUrl}Circular_${endpoint}_');
 
     // Build headers
@@ -103,7 +104,7 @@ String _lastError = '';
             headers: headers,
             body: jsonEncode(data),
           )
-          .timeout(timeout);
+          .timeout(requestTimeout ?? timeout);
 
       // Check HTTP status
       if (response.statusCode != 200) {
@@ -362,6 +363,28 @@ String _lastError = '';
   /// **See also:** [addTransaction]
   Future<Map<String, dynamic>> sendTransaction(Map<String, dynamic> request) async {
     return addTransaction(request);
+  }
+
+  /// Sends a batch of transactions to the blockchain.
+  ///
+  /// **Parameters**:
+  /// - `transactions` (List<Map<String, dynamic>>): List of transaction objects
+  ///
+  /// **Returns:** A [Future] that resolves to a [Map] with batch result
+  Future<Map<String, dynamic>> sendBatch(List<Map<String, dynamic>> transactions) async {
+    try {
+      return await _makeRequest(
+        'AddBatch',
+        {'Transactions': transactions},
+        requestTimeout: const Duration(seconds: 120),
+      );
+    } catch (e) {
+      return {
+        'success': false,
+        'message': 'Server unreachable or request timeout',
+        'error': e.toString(),
+      };
+    }
   }
 
   /// Searches for a transaction by ID among pending transactions.
